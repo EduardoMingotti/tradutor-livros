@@ -1,59 +1,87 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#35695b"><link rel="manifest" href="manifest.json">
-<title>Tradutor de Livros</title>
-<style>
-:root{--ink:#202124;--muted:#697177;--line:#d7dce0;--soft:#f4f6f7;--accent:#35695b;--danger:#8b3030;--z:.72}*{box-sizing:border-box}body{margin:0;background:#eef1f3;color:var(--ink);font-family:Arial,sans-serif}button,input,select,textarea{font:inherit}.top{height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:10px;position:sticky;top:0;z-index:20}.brand{font-weight:800}.top .space{flex:1}.save-state{font-size:12px;color:var(--muted)}main{max-width:1600px;margin:auto;padding:16px}.workspace{height:calc(100vh - 90px);display:grid;grid-template-columns:minmax(390px,.88fr) minmax(560px,1.12fr);gap:14px}.pane{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:auto}.form{padding:18px}.section{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #e9ecef}.section h2{font-size:15px;margin:0 0 11px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}.field{display:flex;flex-direction:column;gap:5px}label{font-size:12px;font-weight:700}input,select,textarea{width:100%;border:1px solid #c8ced3;border-radius:7px;padding:9px;background:#fff;color:var(--ink)}textarea{resize:vertical;min-height:90px}.btn{border:0;border-radius:7px;padding:9px 12px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:#fff}.secondary{background:#fff;border:1px solid var(--line)}.danger{color:var(--danger)}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.blocks{display:flex;flex-direction:column;gap:10px}.block-editor{border:1px solid var(--line);border-radius:10px;background:#fafbfb;padding:11px}.block-head{display:flex;gap:7px;align-items:center;margin-bottom:9px}.block-head b{flex:1}.grab{color:#8b949a}.mini{padding:6px 8px;font-size:12px}.dropzone{border:2px dashed #adb6bc;border-radius:9px;padding:18px;text-align:center;background:#fff;cursor:pointer}.dropzone.drag{border-color:var(--accent);background:#edf6f2}.image-preview{max-width:100%;max-height:230px;object-fit:contain;margin-top:8px;border:1px solid var(--line)}.hint{font-size:11px;color:var(--muted);line-height:1.4}.preview{background:#dfe3e6;display:flex;flex-direction:column;overflow:hidden}.tools{min-height:50px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:7px 11px;flex:none}.tools .space{flex:1}.small{width:34px;height:34px;padding:0}.stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:16px}.stage.over{justify-content:flex-start}.scale{width:calc(794px * var(--z));height:calc(var(--doc-h,1123px) * var(--z));flex:none}.pages{width:794px;display:flex;flex-direction:column;gap:24px;transform:scale(var(--z));transform-origin:top left}.paper{width:794px;height:1123px;background:#fff;position:relative;overflow:hidden;padding:64px 66px 70px;box-shadow:0 8px 25px #0002}.flow{height:989px;overflow:hidden}.doc-title{font:700 26px Georgia,serif;margin:0 0 7px}.doc-subtitle{font-size:11px;color:var(--muted);padding-bottom:17px;border-bottom:1px solid var(--line);margin-bottom:20px}.doc-block{margin-bottom:16px;break-inside:avoid}.doc-block h2{font:700 17px Georgia,serif;margin:0 0 7px}.doc-block h3{font:700 13px Georgia,serif;margin:0 0 6px}.content{font-size:11px;line-height:1.58;white-space:pre-wrap;overflow-wrap:anywhere}.doc-block img{display:block;max-width:100%;max-height:700px;margin:auto;object-fit:contain}.footer{position:absolute;left:66px;right:66px;bottom:27px;border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between;color:var(--muted);font-size:9px}.drawer-backdrop{position:fixed;inset:0;background:#0006;z-index:30;display:none}.drawer-backdrop.on{display:block}.drawer{position:absolute;top:0;right:0;width:min(420px,92vw);height:100%;background:#fff;padding:18px;overflow:auto}.drawer-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}.drawer-head h2{margin:0;flex:1}.book-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}.book-item{border:1px solid var(--line);border-radius:9px;padding:11px;display:flex;align-items:center;gap:8px}.book-item .info{flex:1}.book-item b{display:block}.status{font-size:11px;color:var(--muted);margin-top:3px}.modal{position:fixed;inset:0;background:#0006;z-index:40;display:none;align-items:center;justify-content:center;padding:16px}.modal.on{display:flex}.dialog{background:#fff;border-radius:12px;padding:18px;width:min(460px,100%)}.dialog h2{margin-top:0}.mobile-tabs{display:none}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:8px;z-index:60;display:none}.toast.on{display:block}@media(max-width:1000px){.workspace{display:block;height:auto}.mobile-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.pane{display:none}.pane.on{display:block}.preview.on{display:flex;height:calc(100vh - 130px)}}@media(max-width:650px){main{padding:9px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.top{padding:0 10px}.brand{font-size:14px}.save-state{display:none}.tools{flex-wrap:wrap}.tools b,.tools .space{display:none}}@media print{html,body{width:210mm;background:#fff}.top,.form-pane,.tools,.mobile-tabs,.drawer-backdrop,.modal,.toast{display:none!important}main{padding:0;max-width:none}.workspace{display:block;height:auto}.preview{display:block!important;border:0;overflow:visible}.stage{display:block;padding:0}.scale{width:210mm!important;height:auto!important}.pages{gap:0;transform:none!important}.paper{width:210mm;height:297mm;box-shadow:none;page-break-after:always}.paper:last-child{page-break-after:auto}@page{size:A4;margin:0}}
-</style></head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#35695b">
+  <title>Tradutor de Livros</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/editor.css">
+  <link rel="stylesheet" href="./assets/css/preview.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+</head>
 <body>
-<header class="top"><span class="brand">Tradutor de Livros</span><span id="currentBook" class="hint">Nenhum livro aberto</span><span class="space"></span><span id="saveState" class="save-state">Pronto</span><button class="btn secondary" onclick="openLibrary()">Biblioteca</button><button class="btn primary" onclick="openNewBook()">Novo livro</button></header>
-<main><div class="mobile-tabs"><button id="tf" class="btn primary" onclick="tab(true)">Editor</button><button id="tp" class="btn secondary" onclick="tab(false)">Prévia</button></div><div class="workspace">
-<section id="formPane" class="pane form-pane on"><div class="form">
-<div class="section"><h2>Livro</h2><div class="grid"><div class="field full"><label>Nome</label><input id="bookName" placeholder="Nome do livro"></div><div class="field"><label>Idioma de entrada</label><select id="sourceLanguage"><option value="en">Inglês</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option><option value="it">Italiano</option><option value="auto">Detectar automaticamente</option></select></div><div class="field"><label>Idioma de saída</label><select id="targetLanguage"><option value="pt">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option></select></div><div class="field full"><label>Status</label><select id="bookStatus"><option>Em andamento</option><option>Concluido</option></select></div></div></div>
-<div class="section"><div class="row"><h2 style="margin:0;flex:1">Conteúdo</h2><button class="btn secondary mini" onclick="addBlock('titulo')">+ Título</button><button class="btn secondary mini" onclick="addBlock('subtitulo')">+ Subtítulo</button><button class="btn secondary mini" onclick="addBlock('texto')">+ Texto</button><button class="btn secondary mini" onclick="addBlock('imagem')">+ Imagem</button></div><p class="hint">A prévia usa a tradução revisada quando preenchida. Caso contrário, usa a tradução automática.</p><div id="blocks" class="blocks"></div></div>
-<div class="row"><button class="btn primary" onclick="saveNow()">Salvar agora</button><button class="btn secondary" onclick="render()">Atualizar prévia</button></div>
-</div></section>
-<section id="previewPane" class="pane preview"><div class="tools"><b>Prévia</b><span class="space"></span><button class="btn secondary small" onclick="zoom(-.08)">−</button><span id="zv">72%</span><button class="btn secondary small" onclick="zoom(.08)">+</button><button class="btn secondary" onclick="fit()">Ajustar</button><button class="btn primary" onclick="printPDF()">Baixar PDF</button></div><div id="stage" class="stage"><div class="scale"><div id="pages" class="pages"></div></div></div></section>
-</div></main>
-<div id="drawer" class="drawer-backdrop" onclick="if(event.target===this)closeLibrary()"><aside class="drawer"><div class="drawer-head"><h2>Biblioteca</h2><button class="btn secondary" onclick="closeLibrary()">Fechar</button></div><input id="bookSearch" placeholder="Pesquisar por nome" oninput="loadLibrary()"><div id="bookList" class="book-list"></div></aside></div>
-<div id="newBookModal" class="modal"><div class="dialog"><h2>Novo livro</h2><div class="field"><label>Nome</label><input id="newName"></div><div class="grid" style="margin-top:10px"><div class="field"><label>Entrada</label><select id="newSource"><option value="en">Inglês</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option><option value="it">Italiano</option><option value="auto">Automático</option></select></div><div class="field"><label>Saída</label><select id="newTarget"><option value="pt">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option></select></div></div><div class="row" style="margin-top:15px;justify-content:flex-end"><button class="btn secondary" onclick="closeNewBook()">Cancelar</button><button class="btn primary" onclick="createBook()">Criar livro</button></div></div></div>
-<div id="toast" class="toast"></div>
-<script>
-const API_URL='https://script.google.com/macros/s/AKfycbxbjLSdQ3PUB3jLje1svmphLkJGOSeBcCNbyalvvy3NdVHqp51upEdiPgnitzNVR3ENcA/exec';
-const $=id=>document.getElementById(id);let current=null,blocks=[],z=.72,saveTimer=null,scrollTimer=null;
-const uid=()=>crypto.randomUUID?crypto.randomUUID():'b-'+Date.now()+'-'+Math.random().toString(16).slice(2);
-async function apiGet(action,params={}){const u=new URL(API_URL);u.searchParams.set('action',action);Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));const r=await fetch(u);const j=await r.json();if(!j.success)throw new Error(j.error||'Erro na API');return j.data}
-async function apiPost(action,payload={}){const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...payload})});const j=await r.json();if(!j.success)throw new Error(j.error||'Erro na API');return j.data}
-function toast(msg){$('toast').textContent=msg;$('toast').classList.add('on');setTimeout(()=>$('toast').classList.remove('on'),2600)}
-function state(msg){$('saveState').textContent=msg}
-function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function openNewBook(){$('newBookModal').classList.add('on');setTimeout(()=>$('newName').focus(),30)}function closeNewBook(){$('newBookModal').classList.remove('on')}
-async function createBook(){const name=$('newName').value.trim();if(!name)return toast('Informe o nome do livro.');state('Criando...');try{const b=await apiPost('createBook',{name,sourceLanguage:$('newSource').value,targetLanguage:$('newTarget').value});closeNewBook();loadBookData(b);toast('Livro criado.')}catch(e){toast(e.message)}finally{state('Pronto')}}
-function openLibrary(){$('drawer').classList.add('on');loadLibrary()}function closeLibrary(){$('drawer').classList.remove('on')}
-async function loadLibrary(){const list=$('bookList');list.innerHTML='<span class="hint">Carregando...</span>';try{const books=await apiGet('listBooks',{search:$('bookSearch').value});list.innerHTML=books.length?books.map(b=>`<div class="book-item"><div class="info"><b>${esc(b.name)}</b><div class="status">${esc(b.status)}</div></div><button class="btn secondary mini" onclick="openBook('${b.bookId}')">Abrir</button></div>`).join(''):'<span class="hint">Nenhum livro encontrado.</span>'}catch(e){list.innerHTML=`<span class="hint">${esc(e.message)}</span>`}}
-async function openBook(id){state('Carregando...');try{const b=await apiGet('getBook',{bookId:id});loadBookData(b);closeLibrary();setTimeout(restorePosition,100);toast('Livro aberto.')}catch(e){toast(e.message)}finally{state('Pronto')}}
-function loadBookData(b){current=b;$('bookName').value=b.name||'';$('sourceLanguage').value=b.sourceLanguage||'en';$('targetLanguage').value=b.targetLanguage||'pt';$('bookStatus').value=b.status||'Em andamento';blocks=(b.blocks||[]).map(x=>({...x,localImage:null,uploading:false}));$('currentBook').textContent=b.name;drawBlocks();render()}
-function addBlock(type){if(!current)return toast('Crie ou abra um livro primeiro.');blocks.push({blockId:uid(),type,originalTitle:'',originalSubtitle:'',originalText:'',revisedTranslation:'',automaticTranslation:'',imageFileId:'',imageName:'',imageMimeType:'',localImage:null});drawBlocks();render();scheduleSave()}
-function moveBlock(i,d){const j=i+d;if(j<0||j>=blocks.length)return;[blocks[i],blocks[j]]=[blocks[j],blocks[i]];drawBlocks();render();scheduleSave()}
-function removeBlock(i){const b=blocks[i];if(b.imageFileId&&confirm('Remover a imagem também do Drive?'))apiPost('deleteImage',{fileId:b.imageFileId}).catch(()=>{});blocks.splice(i,1);drawBlocks();render();scheduleSave()}
-function setBlock(i,key,value){blocks[i][key]=value;render();scheduleSave()}
-function drawBlocks(){$('blocks').innerHTML=blocks.map((b,i)=>{let body='';if(b.type==='titulo')body=`<div class="field"><label>Título original</label><input value="${esc(b.originalTitle)}" oninput="setBlock(${i},'originalTitle',this.value)"></div><div class="field" style="margin-top:8px"><label>Título traduzido</label><input value="${esc(b.translatedTitle||'')}" oninput="setBlock(${i},'translatedTitle',this.value)"></div>`;if(b.type==='subtitulo')body=`<div class="field"><label>Subtítulo original</label><input value="${esc(b.originalSubtitle)}" oninput="setBlock(${i},'originalSubtitle',this.value)"></div><div class="field" style="margin-top:8px"><label>Subtítulo traduzido</label><input value="${esc(b.translatedSubtitle||'')}" oninput="setBlock(${i},'translatedSubtitle',this.value)"></div>`;if(b.type==='texto')body=`<div class="field"><label>Texto original</label><textarea oninput="setBlock(${i},'originalText',this.value)">${esc(b.originalText)}</textarea></div><div class="field" style="margin-top:8px"><label>Tradução revisada</label><textarea placeholder="Opcional. A automática aparecerá após salvar." oninput="setBlock(${i},'revisedTranslation',this.value)">${esc(b.revisedTranslation||'')}</textarea></div>${b.automaticTranslation?`<div class="hint" style="margin-top:6px">Automática: ${esc(b.automaticTranslation).slice(0,240)}</div>`:''}`;if(b.type==='imagem')body=`<div class="dropzone" id="dz-${i}" onclick="document.getElementById('fi-${i}').click()"><b>${b.uploading?'Enviando...':'Arraste, clique ou cole uma imagem'}</b><div class="hint">Capturas coladas com Ctrl+V também funcionam.</div><input id="fi-${i}" type="file" accept="image/*" hidden onchange="handleFile(${i},this.files[0])"></div>${(b.localImage||b.imageDataUrl)?`<img class="image-preview" src="${b.localImage||b.imageDataUrl}">`:b.imageFileId?'<div class="hint" style="margin-top:7px">Imagem salva no Drive. Será carregada ao abrir o livro.</div>':''}<div class="field" style="margin-top:8px"><label>Legenda</label><input value="${esc(b.revisedTranslation||'')}" oninput="setBlock(${i},'revisedTranslation',this.value)"></div>`;return `<div class="block-editor" data-block-id="${b.blockId}"><div class="block-head"><span class="grab">☰</span><b>${({titulo:'Título',subtitulo:'Subtítulo',texto:'Texto',imagem:'Imagem'})[b.type]}</b><button class="btn secondary mini" onclick="moveBlock(${i},-1)">↑</button><button class="btn secondary mini" onclick="moveBlock(${i},1)">↓</button><button class="btn secondary mini danger" onclick="removeBlock(${i})">Remover</button></div>${body}</div>`}).join('');wireDrops()}
-function wireDrops(){blocks.forEach((b,i)=>{if(b.type!=='imagem')return;const dz=$('dz-'+i);['dragenter','dragover'].forEach(n=>dz.addEventListener(n,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(n=>dz.addEventListener(n,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>handleFile(i,e.dataTransfer.files[0]))})}
-document.addEventListener('paste',e=>{if(!current)return;const item=[...e.clipboardData.items].find(x=>x.type.startsWith('image/'));if(!item)return;let i=blocks.findIndex(b=>b.type==='imagem'&&!b.imageFileId&&!b.localImage);if(i<0){addBlock('imagem');i=blocks.length-1}handleFile(i,item.getAsFile())});
-async function compressImage(file){const url=URL.createObjectURL(file),img=new Image();await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url});const max=1800,ratio=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*ratio);c.height=Math.round(img.height*ratio);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);return await new Promise(res=>c.toBlob(res,'image/webp',.84))}
-async function handleFile(i,file){if(!file||!file.type.startsWith('image/'))return toast('Selecione uma imagem válida.');if(!current)return;blocks[i].uploading=true;drawBlocks();try{const blob=await compressImage(file),data=await blobToData(blob);blocks[i].localImage=data;render();const r=await apiPost('uploadImage',{bookId:current.bookId,blockId:blocks[i].blockId,fileName:(file.name||'captura').replace(/\.[^.]+$/,'')+'.webp',mimeType:'image/webp',base64:data});blocks[i].imageFileId=r.fileId;blocks[i].imageName=r.fileName;blocks[i].imageMimeType=r.mimeType;toast('Imagem salva no Drive.');scheduleSave(300)}catch(e){toast(e.message)}finally{blocks[i].uploading=false;drawBlocks()}}
-function blobToData(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(blob)})}
-function scheduleSave(delay=1400){if(!current)return;state('Alterações pendentes');clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,delay)}
-async function saveNow(){if(!current)return toast('Crie ou abra um livro primeiro.');clearTimeout(saveTimer);state('Salvando...');try{current=await apiPost('updateBook',{bookId:current.bookId,name:$('bookName').value,sourceLanguage:$('sourceLanguage').value,targetLanguage:$('targetLanguage').value,status:$('bookStatus').value});const saved=await apiPost('saveBook',{bookId:current.bookId,blocks:blocks.map((b,i)=>({blockId:b.blockId,order:i+1,type:b.type,originalTitle:b.originalTitle||'',translatedTitle:b.translatedTitle||'',originalSubtitle:b.originalSubtitle||'',translatedSubtitle:b.translatedSubtitle||'',originalText:b.originalText||'',revisedTranslation:b.revisedTranslation||'',imageFileId:b.imageFileId||'',imageName:b.imageName||'',imageMimeType:b.imageMimeType||''}))});loadBookData(saved);state('Salvo');toast('Alterações salvas.')}catch(e){state('Falha ao salvar');toast(e.message)}}
-['bookName','sourceLanguage','targetLanguage','bookStatus'].forEach(id=>$(id).addEventListener('input',()=>{if(current){render();scheduleSave()}}));
-function shell(){const p=document.createElement('article');p.className='paper';p.innerHTML='<div class="flow"></div><footer class="footer"><span>Tradutor de Livros</span><span class="page-number"></span></footer>';return p}function fits(p){const f=p.querySelector('.flow');return f.scrollHeight<=f.clientHeight}
-function render(){const doc=$('pages');doc.innerHTML='';let p=shell();doc.appendChild(p);let f=p.querySelector('.flow');f.innerHTML=`<h1 class="doc-title">${esc($('bookName').value||'Novo livro')}</h1><div class="doc-subtitle">${esc($('sourceLanguage').value)} → ${esc($('targetLanguage').value)}</div>`;blocks.forEach(b=>{let html='';if(b.type==='titulo')html=`<section class="doc-block" data-id="${b.blockId}"><h2>${esc(b.translatedTitle||b.originalTitle||'Título')}</h2></section>`;if(b.type==='subtitulo')html=`<section class="doc-block" data-id="${b.blockId}"><h3>${esc(b.translatedSubtitle||b.originalSubtitle||'Subtítulo')}</h3></section>`;if(b.type==='texto')html=`<section class="doc-block" data-id="${b.blockId}"><div class="content">${esc(b.revisedTranslation||b.automaticTranslation||b.originalText||'')}</div></section>`;if(b.type==='imagem'){const src=b.localImage||b.imageDataUrl||'';html=`<section class="doc-block" data-id="${b.blockId}">${src?`<img src="${src}">`:''}${b.revisedTranslation?`<div class="content" style="text-align:center;margin-top:6px">${esc(b.revisedTranslation)}</div>`:''}</section>`}f.insertAdjacentHTML('beforeend',html);if(!fits(p)){f.lastElementChild.remove();p=shell();doc.appendChild(p);f=p.querySelector('.flow');f.insertAdjacentHTML('beforeend',html)}});const ps=[...doc.querySelectorAll('.paper')];ps.forEach((x,i)=>x.querySelector('.page-number').textContent=`Página ${i+1} de ${ps.length}`);document.documentElement.style.setProperty('--doc-h',`${ps.length*1123+Math.max(0,ps.length-1)*24}px`);apply()}
-function zoom(d){z=Math.max(.35,Math.min(1.2,z+d));apply()}function apply(){document.documentElement.style.setProperty('--z',z);$('zv').textContent=Math.round(z*100)+'%';$('stage').classList.toggle('over',794*z>$('stage').clientWidth-36)}function fit(){z=Math.max(.35,Math.min(1,($('stage').clientWidth-36)/794));apply()}function printPDF(){render();const old=document.title;document.title=($('bookName').value||'Livro')+' - tradução';window.addEventListener('afterprint',()=>document.title=old,{once:true});window.print()}
-function tab(form){$('formPane').classList.toggle('on',form);$('previewPane').classList.toggle('on',!form);$('tf').className='btn '+(form?'primary':'secondary');$('tp').className='btn '+(!form?'primary':'secondary');if(!form)setTimeout(fit,30)}
-$('stage').addEventListener('scroll',()=>{if(!current)return;clearTimeout(scrollTimer);scrollTimer=setTimeout(savePosition,1300)});async function savePosition(){if(!current)return;const stage=$('stage'),page=Math.max(1,Math.round(stage.scrollTop/(1123*z+24*z))+1);let last='';[...$('pages').querySelectorAll('[data-id]')].forEach(el=>{if(el.getBoundingClientRect().top<innerHeight*.75)last=el.dataset.id});try{await apiPost('saveProgress',{bookId:current.bookId,lastBlockId:last,lastPage:page,scrollPosition:stage.scrollTop})}catch(e){}}
-function restorePosition(){if(!current||!current.progress)return;$('stage').scrollTop=Number(current.progress.scrollPosition||0);const id=current.progress.lastBlockId;if(id){const editor=document.querySelector(`[data-block-id="${CSS.escape(id)}"]`);if(editor)editor.scrollIntoView({block:'center'})}}
-window.addEventListener('beforeunload',()=>{if(current)navigator.sendBeacon(API_URL,JSON.stringify({action:'saveProgress',bookId:current.bookId,lastBlockId:current.progress?.lastBlockId||'',lastPage:current.progress?.lastPage||1,scrollPosition:$('stage').scrollTop}))});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});render();setTimeout(fit,50);window.addEventListener('resize',fit);
-</script></body></html>
+  <header class="topbar">
+    <strong>Tradutor de Livros</strong>
+    <span id="current-book" class="muted">Nenhum livro aberto</span>
+    <span class="spacer"></span>
+    <span id="save-state" class="muted">Pronto</span>
+    <button class="button secondary" id="open-library">Biblioteca</button>
+    <button class="button primary" id="new-book">Novo livro</button>
+  </header>
+
+  <main>
+    <div class="workspace">
+      <section class="panel editor-panel">
+        <div class="section">
+          <h2>Livro</h2>
+          <label>Nome<input id="book-name" maxlength="300"></label>
+          <div class="grid two">
+            <label>Idioma de entrada<select id="source-language"><option value="en">Inglês</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option><option value="it">Italiano</option><option value="auto">Detectar</option></select></label>
+            <label>Idioma de saída<select id="target-language"><option value="pt">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option></select></label>
+          </div>
+          <label>Status<select id="book-status"><option>Em andamento</option><option>Concluido</option></select></label>
+        </div>
+
+        <div class="section">
+          <div class="toolbar wrap">
+            <h2>Conteúdo</h2><span class="spacer"></span>
+            <button class="button secondary small" data-add="titulo">+ Título</button>
+            <button class="button secondary small" data-add="subtitulo">+ Subtítulo</button>
+            <button class="button secondary small" data-add="texto">+ Texto</button>
+            <button class="button secondary small" data-add="imagem">+ Imagem</button>
+          </div>
+          <p class="muted small-text">A tradução é automática. Preencha a revisão somente quando quiser substituir o resultado.</p>
+          <div id="blocks" class="blocks"></div>
+        </div>
+        <button class="button primary" id="save-now">Salvar agora</button>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="toolbar preview-tools">
+          <strong>Prévia</strong><span class="spacer"></span>
+          <button class="button secondary" id="zoom-out">−</button>
+          <span id="zoom-value">72%</span>
+          <button class="button secondary" id="zoom-in">+</button>
+          <button class="button secondary" id="fit-preview">Ajustar</button>
+          <button class="button primary" id="download-pdf">Baixar PDF</button>
+        </div>
+        <div id="preview-stage" class="preview-stage"><div id="preview-pages" class="preview-pages"></div></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="library-backdrop" class="backdrop hidden">
+    <aside class="drawer">
+      <div class="toolbar"><h2>Biblioteca</h2><span class="spacer"></span><button id="close-library" class="button secondary">Fechar</button></div>
+      <input id="library-search" placeholder="Pesquisar por nome">
+      <div id="library-list" class="library-list"></div>
+    </aside>
+  </div>
+
+  <dialog id="new-book-dialog">
+    <form method="dialog" id="new-book-form">
+      <h2>Novo livro</h2>
+      <label>Nome<input id="new-book-name" maxlength="300" required></label>
+      <div class="grid two">
+        <label>Entrada<select id="new-source"><option value="en">Inglês</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option><option value="it">Italiano</option><option value="auto">Detectar</option></select></label>
+        <label>Saída<select id="new-target"><option value="pt">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option></select></label>
+      </div>
+      <div class="toolbar end"><button value="cancel" class="button secondary">Cancelar</button><button value="default" class="button primary">Criar</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
